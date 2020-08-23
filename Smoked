@@ -557,8 +557,6 @@ meta.__namecall=function(self,...)
     end
     return namecall(self,...)
 end
- 
-end)
 --------------
 local LP = game.Players.LocalPlayer
 local Mouse = LP:GetMouse()
