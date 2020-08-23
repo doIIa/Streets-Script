@@ -558,8 +558,7 @@ meta.__namecall=function(self,...)
     return namecall(self,...)
 end
  
---[[
- ----------------------------------------
+------------
  local bypass = false
 local fakemodel = Instance.new("Model")
 fakemodel.Parent = game.Workspace
