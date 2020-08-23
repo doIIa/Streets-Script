@@ -74,7 +74,7 @@ game:GetService("UserInputService").InputBegan:connect(CtrlSelect)
 game:GetService("UserInputService").InputEnded:connect(UnCtrlSelect)
  
 ---------------------
----------------------
+----------------------
  
 function onKeyPress(inputObject, gameProcessedEvent)
     if gameProcessedEvent == false then
