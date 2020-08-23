@@ -557,13 +557,25 @@ meta.__namecall=function(self,...)
     end
     return namecall(self,...)
 end
+ 
+game:GetService('RunService').Stepped:connect(function()
+    if bypass then
+        --pcall(function()
+            local Root = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPartP")
+            if Root then
+                game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPartP").Parent = nil
+            end
+                -- game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPartP").Parent = nil
+        --end)
+    end
+end)
 --------------
 local LP = game.Players.LocalPlayer
 local Mouse = LP:GetMouse()
 toggler = false
  
 FLYING = false
-iyflyspeed = 5
+iyflyspeed = 2
 function sFLY() -- from rocky2u cmdscript
  
     repeat wait() until LP and LP.Character and LP.Character:FindFirstChild('HumanoidRootPart') and LP.Character:FindFirstChild('Humanoid')
@@ -716,8 +728,7 @@ Right Click - Unlock Door.
 +esp <plr> - Trace Or Esps Player.
 +stam - Buys Greenbull In Normal TS.
 +bypass - Tpbypass.
-+unbypass - UnTpbypass.
-]])
++unbypass - UnTpbypass.]])
 
 game:GetService('RunService').Stepped:connect(function()
    
