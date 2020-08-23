@@ -515,11 +515,295 @@ game:GetService("StarterGui"):SetCore("SendNotification", {
 		    Title = "Discord.";
 		    Text = "smokedd#0007 Or Join gg/dZPR5kV (;";
 			})
+			---------------------------------
+			local emojis = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://raw.githubusercontent.com/Aidez/emojiscopy/master/main", true))
+local chatbar = nil
+local function emojiparse(msg) -- parse is a cool word
+    local colons = {}
+    local lastcolon = 0
+    local thingstoreplace = {}
+    repeat
+        local currentcolon = string.find(msg, ":", lastcolon + 1)
+        if currentcolon ~= nil then
+            table.insert(colons, currentcolon)
+            lastcolon = currentcolon
+        else
+            lastcolon = currentcolon
+        end
+    until lastcolon == nil
+    for i = 1,#colons do
+        if i ~= 1 then
+            if emojis[string.sub(string.lower(msg), colons[i - 1] + 1, colons[i] - 1)] ~= nil then
+                thingstoreplace[string.sub(msg, colons[i - 1], colons[i])] = emojis[string.sub(string.lower(msg), colons[i - 1] + 1, colons[i] - 1)] -- HOLY FUCK ME GOOD LUCK KEEPING UP WITH THIS
+            end
+        end
+    end
+    for i,v in pairs(thingstoreplace) do
+        msg = string.gsub(msg,i,v)
+    end
+    return msg
+end
+ 
+local meta = getrawmetatable(game)
+local namecall = meta.__namecall
+setreadonly(meta,false)
+ 
+meta.__namecall=function(self,...)
+    local Args={...}
+    local method = getnamecallmethod()
+    if method == "FireServer" and self == game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest then
+        Args[1] = emojiparse(Args[1])
+        return namecall(self,unpack(Args))
+    end
+    return namecall(self,...)
+end
+ 
+--[[
+ ----------------------------------------
+ local bypass = false
+local fakemodel = Instance.new("Model")
+fakemodel.Parent = game.Workspace
+local meta = getrawmetatable(game) -- rip free exploits :sob:
+setreadonly(meta,false)
+local namecall = meta.__namecall
+local newindex = meta.__newindex
+local index = meta.__index
+function sendnotif(title, body)
+    game.StarterGui:SetCore("SendNotification", {
+        Title = title;
+        Text = body;
+        Icon = "rbxassetid://2541869220";
+        Duration = 3;
+    })
+end
+meta.__namecall=function(self,...)
+    if not checkcaller() then
+        local Args={...}
+        local method = getnamecallmethod()
+        if method == "BreakJoints" and tostring(self) == game.Players.LocalPlayer.Character.Name then
+            return namecall(fakemodel,...)
+        end
+        if method == "FireServer" then 
+            if self.Name == "lIII" or tostring(self.Parent) == "ReplicatedStorage" then 
+                return wait(9e9)
+            end
+            if Args[1] == "hey" then 
+                return wait(9e9)
+            end
+        end
+        if method == "ClearAllChildren" or method == "Destroy" then 
+            return 
+        end 
+        if string.lower(method) == "waitforchild" then
+            if Args[1] == "HumanoidRootPart" then
+                if bypass then
+                    Args[1] = "Torso"
+                    return namecall(self,unpack(Args))
+                end
+            end
+        end
+        if string.lower(method) == "findfirstchild" then
+            if Args[1] == "HumanoidRootPart" then
+                if bypass then
+                    Args[1] = "Torso"
+                end
+            end
+        end
+    end
+    if checkcaller() then
+        local Args={...}
+        local method = getnamecallmethod()
+        if string.lower(method) == "findfirstchild" then
+            if Args[1] ~= nil then
+                if Args[1] == "HumanoidRootPartP" then
+                    Args[1] = "HumanoidRootPart"
+                    return namecall(self,unpack(Args))
+                end
+            end
+        end
+    end
+    return namecall(self,...)
+end
+meta.__index=function(self,k)
+    local Script=getfenv(2).script
+    if checkcaller() then
+        if k == "HumanoidRootPart" and tostring(t)==tostring(player) then
+            if bypass then
+                if getcallingscript then
+                    if getcallingscript() ~= script then
+                        return index(self,"Torso")
+                    end
+                else
+                    if get_calling_script(2) ~= script then
+                        return index(self,"Torso")
+                    end
+                end
+            end
+        end
+    end
+    return index(self,k)
+end
+ 
+game.Players.LocalPlayer.Chatted:Connect(function(msg)
+    lower = string.lower(msg)
+    if lower == "+bypass" or lower == "/e bypass" or lower == "/e :bypass" then
+    game.Players.LocalPlayer.Character:BreakJoints()
+        bypass = true
+        sendnotif("notification", "TP Bypass is now ON!")
+    end
+    if lower == "+unbypass" or lower == "/e unbypass" or lower == "/e :unbypass" then
+    game.Players.LocalPlayer.Character:BreakJoints()
+        bypass = false
+        sendnotif("notification", "TP Bypass is now OFF!")
+    end
+end)
+game:GetService('RunService').Stepped:connect(function()
+    if bypass then
+        --pcall(function()
+            local Root = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPartP")
+            if Root then
+                game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPartP").Parent = nil
+            end
+                -- game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPartP").Parent = nil
+        --end)
+    end
+end)
+--------------
+local LP = game.Players.LocalPlayer
+local Mouse = LP:GetMouse()
+toggler = false
+ 
+FLYING = false
+iyflyspeed = 2
+function sFLY() -- from rocky2u cmdscript
+ 
+    repeat wait() until LP and LP.Character and LP.Character:FindFirstChild('HumanoidRootPart') and LP.Character:FindFirstChild('Humanoid')
+    game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
+    repeat wait() until Mouse
+    local T = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local CONTROL = {F = 0, B = 0, L = 0, R = 0}
+    local lCONTROL = {F = 0, B = 0, L = 0, R = 0}
+    local SPEED = 0
+    
+    local function FLY()
+        FLYING = true
+        local BG = Instance.new('BodyGyro', T)
+        local BV = Instance.new('BodyVelocity', T)
+    BG.P = 9e4
+        BG.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+        BG.cframe = T.CFrame
+        BV.velocity = Vector3.new(0, 0.1, 0)
+        BV.maxForce = Vector3.new(9e9, 9e9, 9e9)
+        spawn(function()
+        repeat wait()
+        
+        if CONTROL.L + CONTROL.R ~= 0 or CONTROL.F + CONTROL.B ~= 0 then
+        SPEED = 50
+        elseif not (CONTROL.L + CONTROL.R ~= 0 or CONTROL.F + CONTROL.B ~= 0) and SPEED ~= 0 then
+        SPEED = 0
+        end
+if (CONTROL.L + CONTROL.R) ~= 0 or (CONTROL.F + CONTROL.B) ~= 0 then
+BV.velocity = ((workspace.CurrentCamera.CoordinateFrame.lookVector * (CONTROL.F + CONTROL.B)) + ((workspace.CurrentCamera.CoordinateFrame * CFrame.new(CONTROL.L + CONTROL.R, (CONTROL.F + CONTROL.B) * 0.2, 0).p) - workspace.CurrentCamera.CoordinateFrame.p)) * SPEED
+lCONTROL = {F = CONTROL.F, B = CONTROL.B, L = CONTROL.L, R = CONTROL.R}
+elseif (CONTROL.L + CONTROL.R) == 0 and (CONTROL.F + CONTROL.B) == 0 and SPEED ~= 0 then
+BV.velocity = ((workspace.CurrentCamera.CoordinateFrame.lookVector * (lCONTROL.F + lCONTROL.B)) + ((workspace.CurrentCamera.CoordinateFrame * CFrame.new(lCONTROL.L + lCONTROL.R, (lCONTROL.F + lCONTROL.B) * 0.2, 0).p) - workspace.CurrentCamera.CoordinateFrame.p)) * SPEED
+else
+BV.velocity = Vector3.new(0, 0.1, 0)
+end
+    BG.cframe = workspace.CurrentCamera.CoordinateFrame
+            until not FLYING
+            CONTROL = {F = 0, B = 0, L = 0, R = 0}
+            lCONTROL = {F = 0, B = 0, L = 0, R = 0}
+            SPEED = 0
+            BG:destroy()
+            BV:destroy()
+        end)
+    end
+    Mouse.KeyDown:connect(function(KEY)
+        if KEY:lower() == 'w' then
+            CONTROL.F = iyflyspeed
+        elseif KEY:lower() == 's' then
+            CONTROL.B = -iyflyspeed
+        elseif KEY:lower() == 'a' then
+            CONTROL.L = -iyflyspeed 
+        elseif KEY:lower() == 'd' then 
+            CONTROL.R = iyflyspeed
+        end
+    end)
+    Mouse.KeyUp:connect(function(KEY)
+        if KEY:lower() == 'w' then
+            CONTROL.F = 0
+        elseif KEY:lower() == 's' then
+            CONTROL.B = 0
+        elseif KEY:lower() == 'a' then
+            CONTROL.L = 0
+        elseif KEY:lower() == 'd' then
+            CONTROL.R = 0
+        end
+    end)
+    FLY()
+game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+end
+ 
+ 
+function NOFLY()
+    FLYING = false
+end
+ 
+function startflying()
+    game.Players.LocalPlayer.PlayerGui.LocalScript.Disabled = true
+    wait()
+    sFLY()
+    wait(0.1)
+    game.Players.LocalPlayer.PlayerGui.LocalScript.Disabled = false
+    local Float = Instance.new('Part', game.Players.LocalPlayer.Character)
+    Float.Name = 'Float'
+    Float.Transparency = 1
+    Float.Size = Vector3.new(6,1,6)
+    Float.Anchored = true
+end
+ 
+game:GetService('RunService').Stepped:connect(function()
+    if FLYING then
+    if game.Players.LocalPlayer.Character then
+        if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
+        game.Players.LocalPlayer.Character.Humanoid.PlatformStand = false
+        game.Players.LocalPlayer.Character.Humanoid.Sit = false
+        game.Players.LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.RunningNoPhysics)
+       end
+       if game.Players.LocalPlayer.Character:FindFirstChild("Float") then
+        game.Players.LocalPlayer.Character:FindFirstChild("Float").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,-3.5,0)
+       end
+    end
+    end
+end)
+ 
+Mouse.KeyDown:Connect(function(key)
+    if key == "f" then
+ 
+    if not toggler then
+        toggler = true
+        startflying()
+    elseif toggler then
+        toggler = false
+        NOFLY()
+        if game.Players.LocalPlayer.Character then
+        if game.Players.LocalPlayer.Character:FindFirstChild("Float") then
+            game.Players.LocalPlayer.Character:FindFirstChild("Float"):Destroy()
+        end
+        end
+    end
+ 
+    end
+end)
+-------------
+
 print([[
 < - Smoked Script By Dollar. - >
 =----=
 < - Keybinds - >
 =----=
+F - Fly.
 X - Noclip.
 H - Hipheight.
 Q - Lock Onto Player.
@@ -541,7 +825,10 @@ Right Click - Unlock Door.
 +view <plr> - Stalks Or Locks Plr.
 +unview <plr> - Unstalks / Unlocks Plr.
 +esp <plr> - Trace Or Esps Player.
-+stam - Buys Greenbull In Normal TS.]])
++stam - Buys Greenbull In Normal TS.
++bypass - Tpbypass.
++unbypass - UnTpbypass.
+]])
 
 game:GetService('RunService').Stepped:connect(function()
    
