@@ -301,17 +301,20 @@ game:GetService('RunService').Stepped:connect(function()
     end
 end)
 ----------
-game:GetService("Players").LocalPlayer.Chatted:connect(function(msg)
-    
-if (string.lower(msg) == "+hh") then
-local part = Instance.new("Part",game.Players.LocalPlayer.Character.Torso)
+local player = game.Players.LocalPlayer
+    local mouse = player:GetMouse()
+     
+    mouse.KeyDown:connect(function(key)
+        if key:lower() == "h"   then
+	 local part = Instance.new("Part",game.Players.LocalPlayer.Character.Torso)
 part.CFrame = game.Players.LocalPlayer.Character.Torso.CFrame * CFrame.new(0,-3,0)
 part.Size = Vector3.new(500,1,500)
-part.Transparency = 10
+part.Transparency = 1
 part.Anchored = true
 
 end
 end)
+
 ------------------------------------
 game.Players.LocalPlayer.Chatted:Connect(function(msg)
     if string.find(msg,"+s ") then -- finds ,s typed
@@ -518,6 +521,7 @@ print([[
 < - Keybinds - >
 =----=
 X - Noclip.
+H - Hipheight.
 Q - Lock Onto Player.
 E- Shoot Locked Player.
 C - Reset Character.
@@ -531,7 +535,6 @@ Right Click - Unlock Door.
 +nodoors - Removes All Doors.
 +gunanims - Glock And Shotty Pawel Gun Anims.
 +rejoin - Rejoins The Game.
-+hh - Makes HipHeight Go 1 Up.
 +g <plr> - Glock Triggerbots Plr.
 +s <plr> - Shotty Triggerbots Plr.
 +streets - Teleports You To Normal The Steets.
