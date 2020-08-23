@@ -625,7 +625,6 @@ print([[
 =----=
 < - Keybinds - >
 =----=
-F - Fly.
 X - Noclip.
 H - Hipheight.
 Q - Lock Onto Player.
