@@ -503,6 +503,11 @@ game:GetService("StarterGui"):SetCore("SendNotification", {
 		    Text = "Combat And Chill Script. (;";
 			})
 			------------------------------------
+			game:GetService("StarterGui"):SetCore("SendNotification", {
+		    Title = "Enjoy!";
+		    Text = "F9 For Commands (+) Is Preflix! (;";
+			})
+---------------			
 print([[
 < - Smoked Script By Dollar. - >
 =----=
