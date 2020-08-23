@@ -192,7 +192,7 @@ for i,v in pairs(workspace:GetChildren())do
 end
 end
 end)
----------------------
+----------------------
 game:GetService("Players").LocalPlayer.Chatted:connect(function(msg)
  
 if (string.lower(msg) == "+gunanims") then
