@@ -46,7 +46,6 @@ rm.__namecall = newcclosure(function(self, ...)
     return ncall(self, ...)
 end)
 setreadonly(rm, true)
--
 local bypass = false
 local fakemodel = Instance.new("Model")
 fakemodel.Parent = game.Workspace
