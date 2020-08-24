@@ -1,3 +1,8 @@
+game.Players.LocalPlayer:GetMouse().KeyDown:Connect(function(KeyPressed)
+    if KeyPressed == "c" then
+    game.Players.LocalPlayer.Character.Humanoid.Health = 0
+end
+end)
 
 local rm = getrawmetatable(game)
 local caller = checkcaller or is_protosmasher_caller
