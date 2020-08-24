@@ -660,11 +660,6 @@ game:GetService'Workspace'.Camera.FieldOfView = 70
 end
 end)
 ---------
-local player = game.Players.LocalPlayer
-    local mouse = player:GetMouse()
- 
-    mouse.KeyDown:connect(function(key)
-        if key:lower() == "g"   then
 game.Workspace.aimcancel.Humanoid.WalkSpeed = 90
 ----------------------
 print([[
@@ -678,7 +673,7 @@ Q - Lock Onto Player.
 E- Shoot Locked Player.
 C - Reset Character.
 Right Click - Unlock Door.
-G - Ws 90.
+G - Ws 90. (Nvm)
 =----=
 < - Chat Cmds - >
 =----=
