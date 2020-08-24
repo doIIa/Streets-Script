@@ -1,3 +1,131 @@
+local LP = game.Players.LocalPlayer
+local Mouse = LP:GetMouse()
+toggler = false
+ 
+FLYING = false
+iyflyspeed = 2
+function sFLY() -- from rocky2u cmdscript
+ 
+    repeat wait() until LP and LP.Character and LP.Character:FindFirstChild('HumanoidRootPart') and LP.Character:FindFirstChild('Humanoid')
+    game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
+    repeat wait() until Mouse
+    local T = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local CONTROL = {F = 0, B = 0, L = 0, R = 0}
+    local lCONTROL = {F = 0, B = 0, L = 0, R = 0}
+    local SPEED = 0
+    
+    local function FLY()
+        FLYING = true
+        local BG = Instance.new('BodyGyro', T)
+        local BV = Instance.new('BodyVelocity', T)
+    BG.P = 9e4
+        BG.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+        BG.cframe = T.CFrame
+        BV.velocity = Vector3.new(0, 0.1, 0)
+        BV.maxForce = Vector3.new(9e9, 9e9, 9e9)
+        spawn(function()
+        repeat wait()
+        
+        if CONTROL.L + CONTROL.R ~= 0 or CONTROL.F + CONTROL.B ~= 0 then
+        SPEED = 50
+        elseif not (CONTROL.L + CONTROL.R ~= 0 or CONTROL.F + CONTROL.B ~= 0) and SPEED ~= 0 then
+        SPEED = 0
+        end
+if (CONTROL.L + CONTROL.R) ~= 0 or (CONTROL.F + CONTROL.B) ~= 0 then
+BV.velocity = ((workspace.CurrentCamera.CoordinateFrame.lookVector * (CONTROL.F + CONTROL.B)) + ((workspace.CurrentCamera.CoordinateFrame * CFrame.new(CONTROL.L + CONTROL.R, (CONTROL.F + CONTROL.B) * 0.2, 0).p) - workspace.CurrentCamera.CoordinateFrame.p)) * SPEED
+lCONTROL = {F = CONTROL.F, B = CONTROL.B, L = CONTROL.L, R = CONTROL.R}
+elseif (CONTROL.L + CONTROL.R) == 0 and (CONTROL.F + CONTROL.B) == 0 and SPEED ~= 0 then
+BV.velocity = ((workspace.CurrentCamera.CoordinateFrame.lookVector * (lCONTROL.F + lCONTROL.B)) + ((workspace.CurrentCamera.CoordinateFrame * CFrame.new(lCONTROL.L + lCONTROL.R, (lCONTROL.F + lCONTROL.B) * 0.2, 0).p) - workspace.CurrentCamera.CoordinateFrame.p)) * SPEED
+else
+BV.velocity = Vector3.new(0, 0.1, 0)
+end
+    BG.cframe = workspace.CurrentCamera.CoordinateFrame
+            until not FLYING
+            CONTROL = {F = 0, B = 0, L = 0, R = 0}
+            lCONTROL = {F = 0, B = 0, L = 0, R = 0}
+            SPEED = 0
+            BG:destroy()
+            BV:destroy()
+        end)
+    end
+    Mouse.KeyDown:connect(function(KEY)
+        if KEY:lower() == 'w' then
+            CONTROL.F = iyflyspeed
+        elseif KEY:lower() == 's' then
+            CONTROL.B = -iyflyspeed
+        elseif KEY:lower() == 'a' then
+            CONTROL.L = -iyflyspeed 
+        elseif KEY:lower() == 'd' then 
+            CONTROL.R = iyflyspeed
+        end
+    end)
+    Mouse.KeyUp:connect(function(KEY)
+        if KEY:lower() == 'w' then
+            CONTROL.F = 0
+        elseif KEY:lower() == 's' then
+            CONTROL.B = 0
+        elseif KEY:lower() == 'a' then
+            CONTROL.L = 0
+        elseif KEY:lower() == 'd' then
+            CONTROL.R = 0
+        end
+    end)
+    FLY()
+game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+end
+ 
+ 
+function NOFLY()
+    FLYING = false
+end
+ 
+function startflying()
+    game.Players.LocalPlayer.PlayerGui.LocalScript.Disabled = true
+    wait()
+    sFLY()
+    wait(0.1)
+    game.Players.LocalPlayer.PlayerGui.LocalScript.Disabled = false
+    local Float = Instance.new('Part', game.Players.LocalPlayer.Character)
+    Float.Name = 'Float'
+    Float.Transparency = 1
+    Float.Size = Vector3.new(6,1,6)
+    Float.Anchored = true
+end
+ 
+game:GetService('RunService').Stepped:connect(function()
+    if FLYING then
+    if game.Players.LocalPlayer.Character then
+        if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
+        game.Players.LocalPlayer.Character.Humanoid.PlatformStand = false
+        game.Players.LocalPlayer.Character.Humanoid.Sit = false
+        game.Players.LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.RunningNoPhysics)
+       end
+       if game.Players.LocalPlayer.Character:FindFirstChild("Float") then
+        game.Players.LocalPlayer.Character:FindFirstChild("Float").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,-3.5,0)
+       end
+    end
+    end
+end)
+ 
+Mouse.KeyDown:Connect(function(key)
+    if key == "h" then
+ 
+    if not toggler then
+        toggler = true
+        startflying()
+    elseif toggler then
+        toggler = false
+        NOFLY()
+        if game.Players.LocalPlayer.Character then
+        if game.Players.LocalPlayer.Character:FindFirstChild("Float") then
+            game.Players.LocalPlayer.Character:FindFirstChild("Float"):Destroy()
+        end
+        end
+    end
+ 
+    end
+end)
+
 targetee = nil
 pleaseshoot = false
 mouse = game.Players.LocalPlayer:GetMouse()
