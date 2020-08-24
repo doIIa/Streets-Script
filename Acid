@@ -47,16 +47,468 @@ rm.__namecall = newcclosure(function(self, ...)
 end)
 setreadonly(rm, true)
 -
-local function RemoveSpaces(name)
-    return name:gsub('%s+', '') or name
+local bypass = false
+local fakemodel = Instance.new("Model")
+fakemodel.Parent = game.Workspace
+local meta = getrawmetatable(game) -- rip free exploits :sob:
+setreadonly(meta,false)
+local namecall = meta.__namecall
+local newindex = meta.__newindex
+local index = meta.__index
+function sendnotif(title, body)
+    game.StarterGui:SetCore("SendNotification", {
+        Title = title;
+        Text = body;
+        Icon = "rbxassetid://2541869220";
+        Duration = 3;
+    })
 end
-
-local function getPlayer(name)
-    name = RemoveSpaces(name)
-    for i, player in pairs(game:GetService('Players'):GetPlayers()) do
-        if player.Name:lower():match('^'.. name:lower()) then
-            return player
+meta.__namecall=function(self,...)
+    if not checkcaller() then
+        local Args={...}
+        local method = getnamecallmethod()
+        if method == "BreakJoints" and tostring(self) == game.Players.LocalPlayer.Character.Name then
+            return namecall(fakemodel,...)
+        end
+        if method == "FireServer" then 
+            if self.Name == "lIII" or tostring(self.Parent) == "ReplicatedStorage" then 
+                return wait(9e9)
+            end
+            if Args[1] == "hey" then 
+                return wait(9e9)
+            end
+        end
+        if method == "ClearAllChildren" or method == "Destroy" then 
+            return 
+        end 
+        if string.lower(method) == "waitforchild" then
+            if Args[1] == "HumanoidRootPart" then
+                if bypass then
+                    Args[1] = "Torso"
+                    return namecall(self,unpack(Args))
+                end
+            end
+        end
+        if string.lower(method) == "findfirstchild" then
+            if Args[1] == "HumanoidRootPart" then
+                if bypass then
+                    Args[1] = "Torso"
+                end
+            end
         end
     end
-    return nil
-end example (u prolly already know) if u type in like "+tp dollarpssasdda" u would only have to put "+tp do"
+    if checkcaller() then
+        local Args={...}
+        local method = getnamecallmethod()
+        if string.lower(method) == "findfirstchild" then
+            if Args[1] ~= nil then
+                if Args[1] == "HumanoidRootPartP" then
+                    Args[1] = "HumanoidRootPart"
+                    return namecall(self,unpack(Args))
+                end
+            end
+        end
+    end
+    return namecall(self,...)
+end
+meta.__index=function(self,k)
+    local Script=getfenv(2).script
+    if checkcaller() then
+        if k == "HumanoidRootPart" and tostring(t)==tostring(player) then
+            if bypass then
+                if getcallingscript then
+                    if getcallingscript() ~= script then
+                        return index(self,"Torso")
+                    end
+                else
+                    if get_calling_script(2) ~= script then
+                        return index(self,"Torso")
+                    end
+                end
+            end
+        end
+    end
+    return index(self,k)
+end
+ 
+game.Players.LocalPlayer.Chatted:Connect(function(msg)
+    lower = string.lower(msg)
+    if lower == ":bypass" or lower == "/e bypass" or lower == "/e :bypass" then
+    game.Players.LocalPlayer.Character:BreakJoints()
+        bypass = true
+        sendnotif("notification", "TP Bypass is now ON!")
+    end
+    if lower == ":unbypass" or lower == "/e unbypass" or lower == "/e :unbypass" then
+    game.Players.LocalPlayer.Character:BreakJoints()
+        bypass = false
+        sendnotif("notification", "TP Bypass is now OFF!")
+    end
+end)
+game:GetService('RunService').Stepped:connect(function()
+    if bypass then
+        --pcall(function()
+            local Root = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPartP")
+            if Root then
+                game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPartP").Parent = nil
+            end
+                -- game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPartP").Parent = nil
+        --end)
+    end
+end)
+---
+FLYKEY = "f"
+NOCLIPKEY = "x" -- you can edit the key inbetween the quoatation marks to whatever key you want for both of these
+ 
+----------------------------------------------
+ 
+repeat wait() until game:FindFirstChild("Players") ~= nil
+repeat wait() until game.Players.LocalPlayer ~= nil
+ 
+if game.PlaceId == 455366377 or game.PlaceId == 4669040 then
+    -- do nothing
+else
+    return
+end
+ 
+firstfly = true
+flying = false
+flyspeed = 2
+mouse = game.Players.LocalPlayer:GetMouse()
+FLYKEY = string.upper(FLYKEY)
+NOCLIPKEY = string.upper(NOCLIPKEY)
+local meta = getrawmetatable(game) -- rip free exploits :sob:
+local namecall = meta.__namecall
+local newindex = meta.__newindex
+local index = meta.__index
+setreadonly(meta,false)
+fakemodel = Instance.new("Model")
+fakemodel.Parent = game.Workspace
+fakehumanoid = Instance.new("Humanoid")
+fakevalue = Instance.new("BoolValue")
+fakevalue.Value = false
+ 
+meta.__newindex=function(self,k,new)
+    if not checkcaller() then
+        local Script=getfenv(2).script
+        if k == "CFrame" then
+            if self.Parent == game.Players.LocalPlayer.Character then
+                return
+            end
+        end
+        if tostring(self) == "Humanoid" and tostring(k) == "Health" then
+            return newindex(fakehumanoid,k,new)
+        end
+    end
+    return newindex(self,k,new)
+end
+ 
+meta.__namecall=function(self,...)
+    if not checkcaller() then
+        local Args={...}
+        local method = getnamecallmethod()
+        if method == "Destroy" and tostring(self) == "BodyGyro" or method == "Destroy" and tostring(self) == "BodyVelocity" then
+             local destroybait = Instance.new("Part", game.Workspace)
+            return namecall(destroybait,...)
+        end
+        if method == "BreakJoints" and tostring(self) == game.Players.LocalPlayer.Character.Name then
+            return namecall(fakemodel,...)
+        end
+    end
+    return namecall(self,...)
+end
+ 
+meta.__index=function(self,k)
+    local Script=getfenv(2).script
+    if not checkcaller() then
+        if tostring(Script)=="LocalScript" and Script.Parent == game.Players.LocalPlayer.PlayerGui then
+            if tostring(self) == "Part" and tostring(k) == "Anchored" then
+                return index(fakevalue,"Value") -- "CustomPhysicalProperties"
+            end
+        end
+    end
+    return index(self,k)
+end
+ 
+function togglefly()
+    flying = not flying
+    local currenttext = ""
+    if flying == true then
+        currenttext = "FLIGHT is now turned ON!"
+    else
+        currenttext = "FLIGHT is now turned OFF!"
+    end
+    game.StarterGui:SetCore("SendNotification", {
+        Title = "notification";
+        Text = currenttext;
+        Icon = "rbxassetid://2541869220";
+        Duration = 1.3;
+    })
+    if flying then
+        if game.Players.LocalPlayer.Character ~= nil then
+            if game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
+                local Float = Instance.new('Part', game.Players.LocalPlayer.Character)
+                Float.Name = "Float"
+                Float.Transparency = 1
+                Float.Size = Vector3.new(6,1,6)
+                Float.Anchored = true
+                game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
+                local T = game.Players.LocalPlayer.Character.HumanoidRootPart
+                local CONTROL = {F = 0, B = 0, L = 0, R = 0}
+                local lCONTROL = {F = 0, B = 0, L = 0, R = 0}
+                local SPEED = 0
+                local function FLY()
+                    FLYING = true
+                    local BG = Instance.new('BodyGyro', T)
+                    local BV = Instance.new('BodyVelocity', T)
+                BG.P = 9e4
+                    BG.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+                    BG.cframe = T.CFrame
+                    BV.velocity = Vector3.new(0, 0.1, 0)
+                    BV.maxForce = Vector3.new(9e9, 9e9, 9e9)
+                    spawn(function()
+                        repeat wait()
+                        if CONTROL.L + CONTROL.R ~= 0 or CONTROL.F + CONTROL.B ~= 0 then
+                            SPEED = 50
+                        elseif not (CONTROL.L + CONTROL.R ~= 0 or CONTROL.F + CONTROL.B ~= 0) and SPEED ~= 0 then
+                            SPEED = 0
+                        end
+                        if (CONTROL.L + CONTROL.R) ~= 0 or (CONTROL.F + CONTROL.B) ~= 0 then
+                            BV.velocity = ((workspace.CurrentCamera.CoordinateFrame.lookVector * (CONTROL.F + CONTROL.B)) + ((workspace.CurrentCamera.CoordinateFrame * CFrame.new(CONTROL.L + CONTROL.R, (CONTROL.F + CONTROL.B) * 0.2, 0).p) - workspace.CurrentCamera.CoordinateFrame.p)) * SPEED
+                            lCONTROL = {F = CONTROL.F, B = CONTROL.B, L = CONTROL.L, R = CONTROL.R}
+                        elseif (CONTROL.L + CONTROL.R) == 0 and (CONTROL.F + CONTROL.B) == 0 and SPEED ~= 0 then
+                            BV.velocity = ((workspace.CurrentCamera.CoordinateFrame.lookVector * (lCONTROL.F + lCONTROL.B)) + ((workspace.CurrentCamera.CoordinateFrame * CFrame.new(lCONTROL.L + lCONTROL.R, (lCONTROL.F + lCONTROL.B) * 0.2, 0).p) - workspace.CurrentCamera.CoordinateFrame.p)) * SPEED
+                        else
+                            BV.velocity = Vector3.new(0, 0.1, 0)
+                        end
+                        BG.cframe = workspace.CurrentCamera.CoordinateFrame
+                        until not FLYING
+                        CONTROL = {F = 0, B = 0, L = 0, R = 0}
+                        lCONTROL = {F = 0, B = 0, L = 0, R = 0}
+                        SPEED = 0
+                        BG:destroy()
+                        BV:destroy()
+                    end)
+                end
+                mouse.KeyDown:connect(function(KEY)
+                    if KEY:lower() == 'w' then
+                        CONTROL.F = flyspeed
+                    elseif KEY:lower() == 's' then
+                        CONTROL.B = -flyspeed
+                    elseif KEY:lower() == 'a' then
+                        CONTROL.L = -flyspeed 
+                    elseif KEY:lower() == 'd' then 
+                        CONTROL.R = flyspeed
+                    end
+                end)
+                mouse.KeyUp:connect(function(KEY)
+                    if KEY:lower() == 'w' then
+                        CONTROL.F = 0
+                    elseif KEY:lower() == 's' then
+                        CONTROL.B = 0
+                    elseif KEY:lower() == 'a' then
+                        CONTROL.L = 0
+                    elseif KEY:lower() == 'd' then
+                        CONTROL.R = 0
+                    end
+                end)
+                FLY()
+                game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+            end
+        end
+    else
+        if game.Players.LocalPlayer.Character then
+            if game.Players.LocalPlayer.Character:FindFirstChild("Float") then
+                game.Players.LocalPlayer.Character:FindFirstChild("Float"):Destroy()
+            end
+        end
+        local AnimationTracks = game.Players.LocalPlayer.Character.Humanoid:GetPlayingAnimationTracks()
+        for i, track in pairs (AnimationTracks) do
+            if track.Name ~= "WalkAnim" then
+                track:Stop()
+            end
+        end
+        FLYING = false
+    end
+end
+ 
+game.Players.LocalPlayer.Chatted:Connect(function(msg)
+    lower = string.lower(msg)
+    if string.find(lower, ":flyspeed ") or string.find(lower, "/e flyspeed ") or string.find(lower, "/e :flyspeed ") then
+        local number = getinputname(lower)
+        if number ~= "" and not string.find(number, "%a") then
+            flyspeed = tonumber(number)
+        end
+    end
+end)
+ 
+game:GetService("UserInputService").InputBegan:Connect(function(inputObject, gameProcessedEvent)
+    if inputObject.KeyCode == Enum.KeyCode[FLYKEY] and gameProcessedEvent == false then
+        if firstfly then
+            game.StarterGui:SetCore("SendNotification", {
+                Title = "CHANGING FLY SPEED";
+                Text = "Use the :flyspeed NUMBER command to set your fly speed!";
+                Icon = "rbxassetid://2541869220";
+                Duration = 3;
+            })
+            firstfly = false
+        end
+        togglefly()
+    end
+    if inputObject.KeyCode == Enum.KeyCode[NOCLIPKEY] and gameProcessedEvent == false then
+        noclip = not noclip
+        local currenttext = ""
+        if noclip == true then
+            currenttext = "NoClip is now turned ON!"
+        else
+            currenttext = "NoClip is now turned OFF!"
+        end
+        game.StarterGui:SetCore("SendNotification", {
+            Title = "notification";
+            Text = currenttext;
+            Icon = "rbxassetid://2541869220";
+            Duration = 3;
+        })
+    end
+end)
+ 
+game:GetService('RunService').Stepped:connect(function()
+    if noclip == true then
+        if game.Players.LocalPlayer.Character ~= nil then
+            if game.Players.LocalPlayer.Character:FindFirstChild("Head") and game.Players.LocalPlayer.Character:FindFirstChild("Torso") and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
+                game.Players.LocalPlayer.Character.Head.CanCollide = false
+                game.Players.LocalPlayer.Character.Torso.CanCollide = false
+                game.Players.LocalPlayer.Character.Humanoid.Sit = false
+            end
+        end
+    end
+    if flying then
+    if game.Players.LocalPlayer.Character then
+        if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
+        game.Players.LocalPlayer.Character.Humanoid.PlatformStand = false
+        game.Players.LocalPlayer.Character.Humanoid.Sit = false
+        game.Players.LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Running)
+       end
+       if game.Players.LocalPlayer.Character:FindFirstChild("Float") then
+        game.Players.LocalPlayer.Character:FindFirstChild("Float").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,-3.5,0)
+       end
+    end
+    end
+end)
+ 
+-- You can change the hotkeys at the top of the script
+-- Default is F for fly and X for noclip
+-- Script will only work on executors that can handle metatables and keycode (synapse x, etc)
+local function sendnotif(title, body)
+    game.StarterGui:SetCore("SendNotification", {
+        Title = title;
+        Text = body;
+        Icon = "rbxassetid://2541869220";
+        Duration = 3;
+    })
+end
+ 
+local function getargs(inputstring, lower)
+    if lower ~= nil then
+        if lower then
+            inputstring = string.lower(inputstring)
+        end
+    end
+    local Args = {}
+    local spaces = {}
+    local lastspace = 0
+    inputstring = string.gsub(inputstring, "/e ", "")
+    inputstring = string.gsub(inputstring, "/w ", "")
+    if string.find(string.sub(inputstring,1,1), "%p") then
+        inputstring = string.sub(inputstring, 2, -1)
+    end
+    repeat
+        local currentspace = string.find(inputstring, " ", lastspace + 1)
+        if currentspace ~= nil then
+            table.insert(spaces, currentspace)
+            lastspace = currentspace
+        else
+            lastspace = currentspace
+        end
+    wait()
+    until lastspace == nil
+    if #spaces >= 2 then
+        Args.Command = string.sub(inputstring, 1, spaces[1] - 1)
+    elseif #spaces == 1 then
+        Args.Command = string.sub(inputstring, 1, spaces[1] - 1)
+        Args[1] = string.sub(inputstring, spaces[1] + 1, -1)
+    elseif #spaces == 0 then
+        Args.Command = string.sub(inputstring, 1, - 1)
+    end
+    if #spaces >= 2 then 
+        for i = 1,#spaces do
+            if i ~= 1 and i ~= #spaces then
+                Args[i - 1] = string.sub(inputstring, spaces[i - 1] + 1, spaces[i] - 1)
+            elseif i == #spaces then
+                Args[i - 1] = string.sub(inputstring, spaces[i - 1] + 1, spaces[i] - 1)
+                Args[i] = string.sub(inputstring, spaces[i] + 1, -1)
+            end
+        end
+    end
+    return Args
+end
+ 
+local function IsInTable(table, tofind)
+    local found = false
+    for i,v in pairs(table) do
+        if v == tofind or i == tofind then
+            found = true
+            break
+        end
+    end
+    return found
+end
+ 
+game.Players.LocalPlayer.Chatted:Connect(function(msg)
+    if not string.find(msg, ":") and not string.find(msg, "/e ") then
+        return
+    end
+    local Args = getargs(msg, true) -- Has all the arguments on the player's message
+    if IsInTable({"joinsmallserver","smallestserver","smallserv","lowserver", "smallserver"}, Args.Command) then
+        local PlaceID = ""
+        if Args[1] == nil then
+            sendnotif("Working...", "Teleporting you to your current game's smallest server (this could take a while)")
+            PlaceID = game.PlaceId
+        elseif tonumber(Args[1]) ~= nil and not string.find(Args[1], "%a") then
+            sendnotif("Working...", "Teleporting you to "..Args[1].."'s smallest server (this could take a while)")
+            PlaceID = Args[1]
+        else
+            sendnotif("Failed!", "Invalid PlaceID")
+            return
+        end
+        local Check = game:HttpGet("https://www.roblox.com/games/getgameinstancesjson?placeId="..tostring(PlaceID).."&startIndex=0",true)
+        local StartIndex = 0
+        local Servers = {}
+        local LowestCount = math.huge
+        local LowestID = ""
+        if string.find(string.lower(Check), "permission") then
+            sendnotif("Failed!", "Lacking permissions for API? (Try again maybe)")
+            return
+        end
+        repeat
+            local CurrentList = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://www.roblox.com/games/getgameinstancesjson?placeId="..tostring(PlaceID).."&startIndex="..tostring(StartIndex),true))
+            for i,v in pairs(CurrentList.Collection) do
+                table.insert(Servers, v)
+            end
+            StartIndex = StartIndex + 10
+            wait()
+        until #CurrentList.Collection == 0
+        for a,b in pairs(Servers) do
+            if #b.CurrentPlayers < LowestCount then
+                LowestCount = #b.CurrentPlayers
+                LowestID = b.Guid
+            end
+        end
+        if LowestID ~= "" then
+            sendnotif("Done!", "Teleporting now")
+            wait(0.5) -- patience gang
+            game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, LowestID, game.Players.LocalPlayer)
+        else
+            sendnotif("uuuuuuuuh...", "what the fuck even happened")
+        end
+    end
+end)
