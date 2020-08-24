@@ -515,10 +515,6 @@ game:GetService'Workspace'.Camera.FieldOfView = 70
 end
 end)
 ---------
- game:GetService("Players").LocalPlayer.Chatted:connect(function(msg)
-    
-if (string.lower(msg) == "+ws 90") then
-
 game.Workspace.aimcancel.Humanoid.WalkSpeed = 90
 ----------------------
 print([[
@@ -526,8 +522,6 @@ print([[
 =----=
 < - Keybinds - >
 =----=
-F - Fly.
-X - Noclip.
 H - Hipheight.
 Q - Lock Onto Player.
 E- Shoot Locked Player.
@@ -536,6 +530,7 @@ Right Click - Unlock Door.
 =----=
 < - Chat Cmds - >
 =----=
++ws 90 - Walkspeed 90 (set by default)
 +fov 100 - 100 Feild Of View. 
 +bluesky - Always Night And Blue Sky.
 +unbluesky - Normal Color
