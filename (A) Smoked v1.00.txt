@@ -661,6 +661,7 @@ end
 end)
 ---------
 game.Workspace.aimcancel.Humanoid.WalkSpeed = 90
+game.Workspace.MurdaPhonk.Humanoid.WalkSpeed = 90
 ----------------------
 print([[
 < - Smoked Script By Dollar. - >
