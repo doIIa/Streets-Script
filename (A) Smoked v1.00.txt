@@ -1,3 +1,4 @@
+
 local rm = getrawmetatable(game)
 local caller = checkcaller or is_protosmasher_caller
 local rindex = rm.__index
@@ -708,3 +709,89 @@ game:GetService('RunService').Stepped:connect(function()
 	end
     end
 end)
+
+local NoclipKey = "x" -- Type a letter in the quotes to change the key that'll toggle noclip
+
+
+
+------------------------------------
+
+repeat wait() until game.Players ~= nil
+repeat wait() until game.Players.LocalPlayer ~= nil
+
+local LocalP = game.Players.LocalPlayer
+local Mouse = LocalP:GetMouse()
+local NoClip = false
+NoclipKey = string.lower(NoclipKey)
+local fakevalue = Instance.new("BoolValue")
+fakevalue.Value = false
+
+local meta = getrawmetatable(game)
+if PROTOSMASHER_LOADED then
+    make_writeable(meta)
+else
+    setreadonly(meta,false)
+end
+local index = meta.__index
+
+meta.__index=function(self,k)
+    if not checkcaller() or not is_protosmasher_caller() then
+        if tostring(self) == "Part" and tostring(k) == "Anchored" then
+            return index(fakevalue,"Value")
+        end
+    end
+    return index(self,k)
+end
+
+Mouse.KeyDown:Connect(function(key)
+    if key == NoclipKey then
+        NoClip = not NoClip
+        local currenttext = ""
+        if NoClip == true then
+            currenttext = "on"
+        else
+            currenttext = "off"
+        end
+        game.StarterGui:SetCore("SendNotification", {
+            Title = "notification";
+            Text = currenttext;
+            Icon = "rbxassetid://2541869220";
+            Duration = 3;
+        })
+    end
+end)
+
+game:GetService('RunService').Stepped:connect(function()
+    if NoClip == true then
+        if LocalP.Character ~= nil then
+            if LocalP.Character:FindFirstChild("Head") and LocalP.Character:FindFirstChild("Torso") and LocalP.Character:FindFirstChild("Humanoid") then
+                LocalP.Character.Head.CanCollide = false
+                LocalP.Character.Torso.CanCollide = false
+                LocalP.Character.Humanoid.Sit = false
+            end
+        end
+    end
+end)
+
+print("")
+print(string.upper(NoclipKey).." Key - Toggle noclip")
+print("")
+game.Players.LocalPlayer:GetMouse().KeyDown:Connect(function(KeyPressed)
+    if KeyPressed == "c" then
+    game.Players.LocalPlayer.Character.Humanoid.Health = 0
+end
+end)
+rpm = 1
+game:GetService('RunService').RenderStepped:connect(function()
+    for i=1,math.ceil((rpm/60)/60) do
+        game.Lighting.TimeOfDay = "18:00:00"
+    end
+end)
+function deseat(instance) 
+    for i,v in pairs(instance:GetChildren()) do
+    if v:IsA("Seat") then
+        v.Parent = game.Lighting
+    end
+        deseat(v)
+    end
+end
