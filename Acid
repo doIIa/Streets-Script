@@ -46,3 +46,17 @@ rm.__namecall = newcclosure(function(self, ...)
     return ncall(self, ...)
 end)
 setreadonly(rm, true)
+-
+local function RemoveSpaces(name)
+    return name:gsub('%s+', '') or name
+end
+
+local function getPlayer(name)
+    name = RemoveSpaces(name)
+    for i, player in pairs(game:GetService('Players'):GetPlayers()) do
+        if player.Name:lower():match('^'.. name:lower()) then
+            return player
+        end
+    end
+    return nil
+end example (u prolly already know) if u type in like "+tp dollarpssasdda" u would only have to put "+tp do"
