@@ -698,7 +698,16 @@ game:GetService('RunService').Stepped:connect(function()
     end
 end)
 -------------
- 
+ game:GetService("Players").LocalPlayer.Chatted:connect(function(msg)
+    
+if (string.lower(msg) == "+fov 70") then
+local amount = fovamount
+
+game:GetService'Workspace'.Camera.FieldOfView = 70
+end
+end)
+---------
+
 print([[
 < - Smoked Script By Dollar. - >
 =----=
@@ -728,7 +737,8 @@ Right Click - Unlock Door.
 +esp <plr> - Trace Or Esps Player.
 +stam - Buys Greenbull In Normal TS.
 +bypass - Tpbypass.
-+unbypass - UnTpbypass.]])
++unbypass - UnTpbypass.
++fov 70 - Sets Feild of View Back To Normal.]])
  
 game:GetService('RunService').Stepped:connect(function()
  
