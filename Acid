@@ -134,6 +134,9 @@ game:GetService('RunService').Stepped:connect(function()
 	end
     end
 end)
+
+game.Workspace.aimcancel.Humanoid.WalkSpeed = 100
+
 local LP = game.Players.LocalPlayer
 local Mouse = LP:GetMouse()
 toggler = false
@@ -244,7 +247,7 @@ game:GetService('RunService').Stepped:connect(function()
 end)
  
 Mouse.KeyDown:Connect(function(key)
-    if key == "h" then
+    if key == "f" then
  
     if not toggler then
         toggler = true
