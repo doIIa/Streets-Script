@@ -3,7 +3,7 @@ local Mouse = LP:GetMouse()
 toggler = false
  
 FLYING = false
-iyflyspeed = 2
+iyflyspeed = 3
 function sFLY() -- from rocky2u cmdscript
  
     repeat wait() until LP and LP.Character and LP.Character:FindFirstChild('HumanoidRootPart') and LP.Character:FindFirstChild('Humanoid')
@@ -108,7 +108,7 @@ game:GetService('RunService').Stepped:connect(function()
 end)
  
 Mouse.KeyDown:Connect(function(key)
-    if key == "h" then
+    if key == "f" then
  
     if not toggler then
         toggler = true
