@@ -731,9 +731,9 @@ G - Ws 90. (Nvm)
 +bypass - Tpbypass.
 +unbypass - UnTpbypass.
 +fov 70 - Sets Feild of View Back To Normal.
-+god - Makes it so people cant shoot or hit u.
-+aim <plr> - Aimbots Target
-+spam spams]])
++god - Makes You Go Into Fucking God Mode.
++aim <plr> - Aimbots Target.
++spam - Spams Messages In Chat.]])
  
 game:GetService('RunService').Stepped:connect(function()
  
