@@ -662,6 +662,43 @@ end)
 ---------
 game.Workspace.aimcancel.Humanoid.WalkSpeed = 90
 ----------------------
+game.Players.LocalPlayer.Chatted:Connect(function(msg)
+    if string.find(msg,"+aim ") then -- finds ,s typed
+        local name = string.gsub(msg,"+aim ", "") -- removes ,s and focuses on name of plr 
+        for i,v in pairs (game.Players:GetChildren()) do -- gets all player names
+            if string.sub(string.lower(v.Name) , 1, string.len(name)) == string.lower(name) then -- shortens the length of name
+        if game.Players.LocalPlayer.Character.Glock then
+            while true do 
+                wait()
+             game.Players.LocalPlayer.Character.Glock.Fire:FireServer(v.Character.Head.CFrame)
+            end
+
+end
+end
+end
+end
+end)
+
+
+-- shotty aimbot
+     game.Players.LocalPlayer.Chatted:Connect(function(m)
+    if string.find(m,"+aim ") then -- finds ,s typed
+        local name = string.gsub(m,"+aim ", "") -- removes ,s and focuses on name of plr 
+        for i,v in pairs (game.Players:GetChildren()) do -- gets all player names
+            if string.sub(string.lower(v.Name) , 1, string.len(name)) == string.lower(name) then -- shortens the length of name
+        if game.Players.LocalPlayer.Character.Shotty then
+            while true do
+                wait()
+             game.Players.LocalPlayer.Character.Shotty.Fire:FireServer(v.Character.Head.CFrame)
+            end
+
+end
+end
+end
+end
+end)
+--------------
+
 print([[
 < - Smoked Script By Dollar. - >
 =----=
