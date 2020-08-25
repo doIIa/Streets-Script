@@ -698,13 +698,6 @@ end
 end
 end)
 --------------
-game:GetService("Players").LocalPlayer.Chatted:connect(function(msg)
- 
-    if (string.lower(msg) == "+spam") then
-while true do wait(1) 
-
-local A_1 = "smoked script on top." local A_2 = "All" 
-local Event = game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest Event:FireServer(A_1, A_2) end
 
 print([[
 < - Smoked Script By Dollar. - >
