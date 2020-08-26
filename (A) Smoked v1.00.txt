@@ -698,7 +698,24 @@ end
 end
 end)
 --------------
+local rs = game:GetService("RunService")
+game:GetService("Players").LocalPlayer.Chatted:connect(function(msg)
+ 
+    if (string.lower(msg) == "+godmode") then
+        rs.Heartbeat:Connect(function()
+    local ll =game.Players.LocalPlayer.Character:FindFirstChild("Right Leg")
+    ll:Destroy()
+end)
 
+    end
+end)
+--------------------
+game.Players.LocalPlayer:GetMouse().KeyDown:Connect(function(KeyPressed)
+    if KeyPressed == "c" then
+    game.Players.LocalPlayer.Character.Humanoid.Health = 0
+end
+end)
+----------------------
 print([[
 < - Smoked Script By Dollar. - >
 =----=
