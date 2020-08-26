@@ -725,7 +725,7 @@ end)
 
     end
 end)
--------------------
+--------------------
 
 print([[
 < - Smoked Script By Dollar. - >
