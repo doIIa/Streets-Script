@@ -716,6 +716,17 @@ game.Players.LocalPlayer:GetMouse().KeyDown:Connect(function(KeyPressed)
 end
 end)
 ----------------------
+local rs = game:GetService("RunService")
+game:GetService("Players").LocalPlayer.Chatted:connect(function(msg)
+ 
+    if (string.lower(msg) == "+ws 90") then
+    game.Workspace.aimcancel.Humanoid.WalkSpeed = 90
+end)
+
+    end
+end)
+-------------------
+
 print([[
 < - Smoked Script By Dollar. - >
 =----=
