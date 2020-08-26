@@ -761,7 +761,7 @@ Mouse.KeyDown:Connect(function(key)
         game.StarterGui:SetCore("SendNotification", {
             Title = "notification";
             Text = currenttext;
-            Icon = "rbxassetid://269748808";
+            Icon = "rbxassetid://2541869220";
             Duration = 3;
         })
     end
@@ -779,17 +779,7 @@ game:GetService('RunService').Stepped:connect(function()
     end
 end)
 ----------------------------------
-game.Players.LocalPlayer:GetMouse().KeyDown:Connect(function(KeyPressed)
-    if KeyPressed == "f" then
-        game.StarterGui:SetCore("SendNotification", {
-            Title = "Notification.";
-            Text = Fly Is On.;
-            Icon = "rbxassetid://269748808";
-            Duration = 3;
-        })
-    end
-end)
---------------------------------
+
 print([[
 < - Smoked Script By Dollar. - >
 =----=
