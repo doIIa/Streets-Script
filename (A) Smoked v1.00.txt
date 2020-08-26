@@ -748,7 +748,7 @@ G - Ws 90. (Nvm)
 +bypass - Tpbypass.
 +unbypass - UnTpbypass.
 +fov 70 - Sets Feild of View Back To Normal.
-+god - Makes You Go Into Fucking God Mode.
++godmode - Makes You Go Into Fucking God Mode.
 +aim <plr> - Aimbots Target.
 +spam - Spams Messages In Chat.]])
  
