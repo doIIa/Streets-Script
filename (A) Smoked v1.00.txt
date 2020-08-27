@@ -436,8 +436,8 @@ end)
  
 ------------------------------------
 game.Players.LocalPlayer.Chatted:Connect(function(msg)
-    if string.find(msg,"+s ") then -- finds ,s typed
-        local name = string.gsub(msg,"+s ", "") -- removes ,s and focuses on name of plr 
+    if string.find(msg,"+shotty ") then -- finds ,s typed
+        local name = string.gsub(msg,"+shotty ", "") -- removes ,s and focuses on name of plr 
         for i,v in pairs (game.Players:GetChildren()) do -- gets all player names
             if string.sub(string.lower(v.Name) , 1, string.len(name)) == string.lower(name) then -- shortens the length of name
                 game.Players.LocalPlayer.Backpack.Shotty.Parent = game.Players.LocalPlayer.Character
@@ -463,8 +463,8 @@ end
 end)
  
 game.Players.LocalPlayer.Chatted:Connect(function(msg)
-    if string.find(msg,"+g ") then -- finds ,s typed
-        local name = string.gsub(msg,"+g ", "") -- removes ,s and focuses on name of plr 
+    if string.find(msg,"+glock ") then -- finds ,s typed
+        local name = string.gsub(msg,"+glock ", "") -- removes ,s and focuses on name of plr 
         for i,v in pairs (game.Players:GetChildren()) do -- gets all player names
             if string.sub(string.lower(v.Name) , 1, string.len(name)) == string.lower(name) then -- shortens the length of name
                 game.Players.LocalPlayer.Backpack.Glock.Parent = game.Players.LocalPlayer.Character
@@ -546,11 +546,11 @@ BillboardGui.LightInfluence = 1.000
 BillboardGui.Size = UDim2.new(0, 200, 0, 50)
 TextLabel.Parent = BillboardGui
 TextLabel.Active = true
-TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
 TextLabel.BackgroundTransparency = 1.000
 TextLabel.Size = UDim2.new(0, 200, 0, 50)
 TextLabel.Font = Enum.Font.SciFi
-TextLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
+TextLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
 TextLabel.TextSize = 37.000
 TextLabel.Text = v.Name
 -------------------------------------------------------- esp box
@@ -659,8 +659,6 @@ local amount = fovamount
 game:GetService'Workspace'.Camera.FieldOfView = 70
 end
 end)
----------
-game.Workspace.aimcancel.Humanoid.WalkSpeed = 90
 ----------------------
 game.Players.LocalPlayer.Chatted:Connect(function(msg)
     if string.find(msg,"+aim ") then -- finds ,s typed
@@ -802,8 +800,8 @@ G - Ws 90. (Nvm)
 +nodoors - Removes All Doors.
 +gunanims - Glock And Shotty Pawel Gun Anims.
 +rejoin - Rejoins The Game.
-+g <plr> - Glock Triggerbots Plr.
-+s <plr> - Shotty Triggerbots Plr.
++glock <plr> - Glock Triggerbots Plr.
++shotty <plr> - Shotty Triggerbots Plr.
 +streets - Teleports You To Normal The Steets.
 +view <plr> - Stalks Or Locks Plr.
 +unview <plr> - Unstalks / Unlocks Plr.
