@@ -779,11 +779,14 @@ end)
 ----------------------------------
 
 print([[
+         Cmds
+< - Console Cmds  By Dollar. - >
 < - Smoked Script By Dollar. - >
 =----=
 < - Keybinds - >
 =----=
-F- Fly.
+F - Fly.
+Noclip - X
 H - Hipheight.
 Q - Lock Onto Player.
 E- Shoot Locked Player.
@@ -812,7 +815,23 @@ G - Ws 90. (Nvm)
 +fov 70 - Sets Feild of View Back To Normal.
 +godmode - Makes You Go Into Fucking God Mode.
 +aim <plr> - Aimbots Target.
-+spam - Spams Messages In Chat.]])
++spam - Spams Messages In Chat.
+=----=
+< - Coming Soon - >
+=----=
++flyspeed <num>
++camlock <plr>
++sprintspeed <num>
++walkspeed <num> <already seperate exe>
++cmds
++feloop <plr>
++antife
++stalk <plr>
++camlocktype <Torso/Head>
++dupe
++lowerhh
+=----=
+< - More Coming Soon - >]])
  
 game:GetService('RunService').Stepped:connect(function()
  
