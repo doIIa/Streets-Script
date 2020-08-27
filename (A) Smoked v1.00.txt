@@ -437,7 +437,7 @@ end)
 ------------------------------------
 game.Players.LocalPlayer.Chatted:Connect(function(msg)
     if string.find(msg,"+shotty ") then -- finds ,s typed
-        local name = string.gsub(msg,"+shotty ", "+g ", "" ) -- removes ,s and focuses on name of plr 
+        local name = string.gsub(msg,"+shotty ", "") -- removes ,s and focuses on name of plr 
         for i,v in pairs (game.Players:GetChildren()) do -- gets all player names
             if string.sub(string.lower(v.Name) , 1, string.len(name)) == string.lower(name) then -- shortens the length of name
                 game.Players.LocalPlayer.Backpack.Shotty.Parent = game.Players.LocalPlayer.Character
@@ -464,7 +464,7 @@ end)
  
 game.Players.LocalPlayer.Chatted:Connect(function(msg)
     if string.find(msg,"+glock ") then -- finds ,s typed
-        local name = string.gsub(msg,"+glock ", "+g ", "") -- removes ,s and focuses on name of plr 
+        local name = string.gsub(msg,"+glock ", "") -- removes ,s and focuses on name of plr 
         for i,v in pairs (game.Players:GetChildren()) do -- gets all player names
             if string.sub(string.lower(v.Name) , 1, string.len(name)) == string.lower(name) then -- shortens the length of name
                 game.Players.LocalPlayer.Backpack.Glock.Parent = game.Players.LocalPlayer.Character
