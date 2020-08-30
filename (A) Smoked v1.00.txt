@@ -931,14 +931,14 @@ TextLabel.TextScaled = true
 TextLabel.TextSize = 14
 TextLabel.TextWrapped = true
  
-Open.Name = "Walkspeed"
+Open.Name = "Open"
 Open.Parent = Hacks
 Open.BackgroundColor3 = Color3.new(139, 0, 0)
 Open.BackgroundTransparency = 0.44999998807907
 Open.Position = UDim2.new(0, 0, 0.756052136, 0)
 Open.Size = UDim2.new(0.100000001, 0, 0.0553072728, 0)
 Open.Font = Enum.Font.SourceSans
-Open.Text = "Walkspeed"
+Open.Text = "Open"
 Open.TextColor3 = Color3.new(1, 1, 1)
 Open.TextScaled = true
 Open.TextSize = 14
