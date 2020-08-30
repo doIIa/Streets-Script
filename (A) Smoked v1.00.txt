@@ -777,18 +777,7 @@ game:GetService('RunService').Stepped:connect(function()
     end
 end)
 ----------------------------------
-game:GetService("Players").LocalPlayer.Chatted:connect(function(msg)
- 
-    if (string.lower(msg) == "+antife") then
-    game.Players.LocalPlayer.Character["Right Arm"]:Remove()
-    ------------------------------------------
-game:GetService("Players").LocalPlayer.Chatted:connect(function(msg)
- 
-    if (string.lower(msg) == "+ws 90") then
-    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 90
-end
-end)
-----------------------------
+
 print([[
          Cmds
 < - Console Cmds  By Dollar. - >
