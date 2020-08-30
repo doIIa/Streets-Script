@@ -931,14 +931,14 @@ TextLabel.TextScaled = true
 TextLabel.TextSize = 14
 TextLabel.TextWrapped = true
  
-Open.Name = "Open"
+Open.Name = "Walkspeed"
 Open.Parent = Hacks
 Open.BackgroundColor3 = Color3.new(139, 0, 0)
 Open.BackgroundTransparency = 0.44999998807907
 Open.Position = UDim2.new(0, 0, 0.756052136, 0)
 Open.Size = UDim2.new(0.100000001, 0, 0.0553072728, 0)
 Open.Font = Enum.Font.SourceSans
-Open.Text = "Open"
+Open.Text = "Walkspeed"
 Open.TextColor3 = Color3.new(1, 1, 1)
 Open.TextScaled = true
 Open.TextSize = 14
@@ -989,7 +989,7 @@ G - Ws 90. (Nvm)
 =----=
 < - Chat Cmds - >
 =----=
-+wsgui - ! <Important> ! - Opens Up Walkspeed And JumpPower GUI.
++wsgui - Opens Up Walkspeed And JumpPower GUI.
 +ws 90 - Walkspeed 90 (set by default)
 +fov 100 - 100 Feild Of View. 
 +bluesky - Always Night And Blue Sky.
