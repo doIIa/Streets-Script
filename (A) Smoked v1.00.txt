@@ -782,15 +782,11 @@ game:GetService("Players").LocalPlayer.Chatted:connect(function(msg)
     if (string.lower(msg) == "+antife") then
     game.Players.LocalPlayer.Character["Right Arm"]:Remove()
     ------------------------------------------
-    local rs = game:GetService("RunService")
 game:GetService("Players").LocalPlayer.Chatted:connect(function(msg)
  
     if (string.lower(msg) == "+ws 90") then
-        rs.Heartbeat:Connect(function()
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 90
-end)
-
-    end
+end
 end)
 ----------------------------
 print([[
