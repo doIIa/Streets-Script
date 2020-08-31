@@ -633,17 +633,12 @@ end)
 --------------------------------------------------------
 game:GetService("StarterGui"):SetCore("SendNotification", {
 		    Title = "Smoked.";
-		    Text = "Combat And Chill Script. (;";
+		    Text = "Smoked Paid Loaded. (;";
 			})
 			------------------------------------
 			game:GetService("StarterGui"):SetCore("SendNotification", {
 		    Title = "Enjoy!";
 		    Text = "F9 For Commands (+) Is Preflix! (;";
-			})
----------------	
-game:GetService("StarterGui"):SetCore("SendNotification", {
-		    Title = "Discord.";
-		    Text = "smokedd#0007 Or Join gg/dZPR5kV (;";
 			})
 			--------------------------------
 			game:GetService("StarterGui"):SetCore("SendNotification", {
