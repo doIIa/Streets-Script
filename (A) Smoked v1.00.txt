@@ -7817,7 +7817,7 @@ G - Ws 90. (Nvm)
 +godmode - Makes You Go Into Fucking God Mode.
 +aim <plr> - Aimbots Target.
 +spam - Spams Messages In Chat.
-+antife - Anti Feloop / anti naked guy lol
++antife - Anti Feloop / anti naked guy lol.
 -
 +flyspeed <num>
 +camlock <plr>
