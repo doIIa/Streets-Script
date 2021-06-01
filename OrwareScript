@@ -1,3 +1,10 @@
+   game.StarterGui:SetCore("SendNotification", {
+    Title = "BUG FIX";
+    Text = "Bug Fix v1.01";
+    Icon = "rbxassetid://2541869220";
+    Duration = 4;
+        })
+
 --[[Local Whitelist.]]--
 game.StarterGui:SetCore("SendNotification", {
     Title = "WHITELIST";
@@ -24,12 +31,6 @@ local Whitelisted = {
     LPR:Kick("You arent whitelisted sorry!")
     end
     
-    game.StarterGui:SetCore("SendNotification", {
-    Title = "BUG FIX";
-    Text = "Bug Fix v1.01";
-    Icon = "rbxassetid://2541869220";
-    Duration = 4;
-        })
 
 	local LoadingTime = tick();
 local Commands, Prefix = {}, ""
