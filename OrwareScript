@@ -12,6 +12,7 @@ local Whitelisted = {
     [130438890] = true; -- linear (CREATOR) (uhreebahfanboy)
     [2378545676] = true; -- (VAL3RYSSIMP)
     [2254367838] = true; -- (angeIangelangeI)
+    [878779033] = true; -- (aim alt Kottable)
 }
     if Whitelisted[LPR.UserId] then
         game.StarterGui:SetCore("SendNotification", {
