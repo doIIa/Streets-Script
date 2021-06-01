@@ -2,7 +2,7 @@
 game.StarterGui:SetCore("SendNotification", {
     Title = "WHITELIST";
     Text = "Checking if player is whitelisted...";
-    Icon = "";
+    Icon = "rbxassetid://2541869220";
     Duration = 4;
         })
 wait(2)
@@ -23,6 +23,13 @@ local Whitelisted = {
     else
     LPR:Kick("You arent whitelisted sorry!")
     end
+    
+    game.StarterGui:SetCore("SendNotification", {
+    Title = "BUG FIX";
+    Text = "Bug Fix v1.01";
+    Icon = "rbxassetid://2541869220";
+    Duration = 4;
+        })
 
 	local LoadingTime = tick();
 local Commands, Prefix = {}, ""
@@ -30,7 +37,7 @@ getgenv().Notify = function(title, text, icon, time)
     game:GetService("StarterGui"):SetCore("SendNotification",{
         Title = title;
         Text = text;
-        Icon = "";
+        Icon = "rbxassetid://2541869220";
         Duration = time;
     }) 
 end
