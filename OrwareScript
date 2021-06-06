@@ -750,7 +750,7 @@ Input.InputEnded:Connect(
 
    game.StarterGui:SetCore("SendNotification", {
     Title = "BUG FIX";
-    Text = "Bug Fix v1.01";
+    Text = "Bug Fix v2.01";
     Icon = "rbxassetid://2541869220";
     Duration = 4;
         })
