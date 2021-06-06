@@ -8,6 +8,7 @@ game.StarterGui:SetCore("SendNotification", {
 wait(2)
 local LPR = game:GetService("Players").LocalPlayer
 local Whitelisted = {
+    [1065069613] = true; -- aim (HITONSIGHTSKITTEN)
     [2044912228] = true; -- aim (ZemouIALT)
     [130438890] = true; -- linear (CREATOR) (uhreebahfanboy)
     [2378545676] = true; -- (VAL3RYSSIMP)
