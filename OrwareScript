@@ -913,9 +913,3 @@ TSbypass = true
             end
         end
     end)
-    end
-    end)
-    
-    print([[
-    .tpbypass = tpbypass
-    ]])
