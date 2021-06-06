@@ -8,14 +8,15 @@ game.StarterGui:SetCore("SendNotification", {
 wait(2)
 local LPR = game:GetService("Players").LocalPlayer
 local Whitelisted = {
-    [1065069613] = true; -- aim (HITONSIGHTSKITTEN)
-    [2044912228] = true; -- aim (ZemouIALT)
-    [130438890] = true; -- linear (CREATOR) (uhreebahfanboy)
-    [2378545676] = true; -- (VAL3RYSSIMP)
-    [2254367838] = true; -- (angeIangelangeI)
-    [878779033] = true; -- (aim alt Kottable)
-    [2626152888] = true; -- (El_ODSGxFlameskii buyer)
-    [2626095397] = true; -- (El_ODSGxFireskii buyer)
+    [1065069613] = true; -- aimcancel | Co-Owner / Co-Scripter
+    [2044912228] = true; -- ZemouIALT | Admin
+    [130438890] = true; -- uhreebahfanboy | Creator / Owner
+    [2378545676] = true; -- (VAL3RYSSIMP | Buyer)
+    [2254367838] = true; -- (angeIangelangeI | Buyer)
+    [878779033] = true; -- (The50DollarBill | Admin)
+    [2626152888] = true; -- (El_ODSGxFlameskii | Buyer)
+    [2626095397] = true; -- (El_ODSGxFireskii | Buyer)
+    [90040548] = true; -- (ISoIdYouOnEbay | Buyer)
 }
     if Whitelisted[LPR.UserId] then
         game.StarterGui:SetCore("SendNotification", {
