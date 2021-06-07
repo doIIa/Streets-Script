@@ -8,12 +8,12 @@ game.StarterGui:SetCore("SendNotification", {
 wait(2)
 local LPR = game:GetService("Players").LocalPlayer
 local Whitelisted = {
-    [1065069613] = true; -- aimcancel | Co-Owner / Co-Scripter
-    [2044912228] = true; -- ZemouIALT | Admin
+    [1065069613] = true; -- aimcancel | Co-Dev
+    [2044912228] = true; -- ZemouIALT | Alt
     [130438890] = true; -- uhreebahfanboy | Creator / Owner
     [2378545676] = true; -- (VAL3RYSSIMP | Buyer)
     [2254367838] = true; -- (angeIangelangeI | Buyer)
-    [878779033] = true; -- (The50DollarBill | Admin)
+    [878779033] = true; -- (The50DollarBill | Alt)
     [2626152888] = true; -- (El_ODSGxFlameskii | Buyer)
     [2626095397] = true; -- (El_ODSGxFireskii | Buyer)
     [90040548] = true; -- (ISoIdYouOnEbay | Buyer)
