@@ -18,6 +18,7 @@ local Whitelisted = {
     [2626095397] = true; -- (El_ODSGxFireskii | Buyer)
     [90040548] = true; -- (ISoIdYouOnEbay | Buyer)
     [2589414633] = true; -- (MAHONTOP | Buyer)
+    [1313610080] = true; -- (Zuggin | Buyer)
 }
     if Whitelisted[LPR.UserId] then
         game.StarterGui:SetCore("SendNotification", {
