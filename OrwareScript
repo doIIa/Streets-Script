@@ -22,6 +22,7 @@ local Whitelisted = {
     [2258274790] = true; -- (07clips | Buyer Alt)
     [1697913853] = true; -- (GorillaInGorillaSkin | Buyer Alt)
     [2241682540] = true; -- (FrozenShell | Buyer Alt)
+    [2345636171] = true; -- (spacejams3s | Buyer Alt)
 }
     if Whitelisted[LPR.UserId] then
         game.StarterGui:SetCore("SendNotification", {
