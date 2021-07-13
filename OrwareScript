@@ -23,6 +23,7 @@ local Whitelisted = {
     [1697913853] = true; -- (GorillaInGorillaSkin | Buyer Alt)
     [2241682540] = true; -- (FrozenShell | Buyer Alt)
     [2345636171] = true; -- (spacejams3s | Buyer Alt)
+    [2662887206] = true; -- (ROT_VIOLENCE | Buyer Alt)
 }
     if Whitelisted[LPR.UserId] then
         game.StarterGui:SetCore("SendNotification", {
@@ -760,6 +761,8 @@ Input.InputEnded:Connect(
     Icon = "rbxassetid://2541869220";
     Duration = 4;
         })
+	
+	wait (1)
 	
 	local FirstScript = Instance.new("ScreenGui")
 local main = Instance.new("Frame")
