@@ -808,6 +808,96 @@ Open.TextScaled = true
 Open.TextSize = 14.000
 Open.TextWrapped = true
 
+local EspTable = {
+
+[2662887206] = {
+        ['Name'] = "Violence (Owner)";
+        ['Colour'] = Color3.fromRGB(61, 21, 133)
+    };
+
+ [90040548] = {
+        ['Name'] = "Ebay (Friend)";
+        ['Colour'] = Color3.fromRGB(255, 21, 133)
+    };
+
+    [2589414633] = {
+        ['Name'] = "Mah (Friend)";
+        ['Colour'] = Color3.fromRGB(255,0,0)
+    };
+    [130438890] = {
+        ['Name'] = "Linear (Main Dev)";
+        ['Colour'] = Color3.fromRGB(255,255,255)
+    };
+
+     [2378545676] = {
+        ['Name'] = "Jacob (Admin)";
+        ['Colour'] = Color3.fromRGB(255,255,255)
+    };
+     [2254367838] = {
+        ['Name'] = "Angel (Admin)";
+        ['Colour'] = Color3.fromRGB(255,255,255)
+    };
+    [345636171] = {
+        ['Name'] = "Aim (Co Dev)";
+        ['Colour'] = Color3.fromRGB(255,255,255)
+    };
+}
+
+local function EspNoteablePerson(Plr)
+    local B = Instance.new('BillboardGui',Plr.Character.Head)
+    B.Adornee = Plr.Character.Head
+    B.Size = UDim2.new(0,100,0,100)
+    B.StudsOffset = Vector3.new(0,1,0)
+    B.AlwaysOnTop = true 
+    local C = Instance.new('TextLabel',B)
+    C.BackgroundTransparency = 1
+    C.Position = UDim2.new(0,0,0,0)
+    C.Size = UDim2.new(1,0,0,40)
+    C.TextStrokeTransparency = 0.5
+    C.TextSize = 13.8
+    C.TextStrokeColor3 = EspTable[Plr.UserId].Colour
+    C.TextColor3 = EspTable[Plr.UserId].Colour
+    C.Text = EspTable[Plr.UserId].Name
+end
+
+local PlayersC = game:GetService'Players':GetPlayers()
+for i = 1,#PlayersC do 
+    local Plr = PlayersC[i]
+    if EspTable[Plr.UserId] then
+        local Head = Plr.Character:WaitForChild('Head',10)
+        if Head then 
+            EspNoteablePerson(Plr)
+        end 
+        Plr.CharacterAdded:Connect(function()
+            Plr.Character:WaitForChild('Head',10)
+            EspNoteablePerson(Plr)
+        end)
+    end
+end 
+
+game:GetService'Players'.PlayerAdded:Connect(function(Plr)
+    if EspTable[Plr.UserId] then 
+        Plr.CharacterAdded:Connect(function()
+            EspNoteablePerson(Plr)
+        end)
+    end
+end)
+game:GetService'Players'.ChildAdded:Connect(function(Plr)
+    if EspTable[Plr.UserId] then 
+        Plr.CharacterAdded:Connect(function()
+            EspNoteablePerson(Plr)
+        end)
+    end
+end)
+
+
+
+
+
+
+
+
+
 -- Scripts:
 
 coroutine.wrap(MBXT_fake_script)()
@@ -828,3 +918,60 @@ local function ZCAEOFU_fake_script() -- Open.OpenScript
 	end)
 end
 coroutine.wrap(ZCAEOFU_fake_script)()
+
+
+
+local LocalP = game.Players.LocalPlayer
+
+LocalP.Character.Stamina.Changed:Connect(function()
+    LocalP.Character:WaitForChild"Stamina"
+    LocalP.Character.Stamina.Value = 100 
+end)
+LocalP.CharacterAdded:Connect(function()
+    LocalP.Character:WaitForChild"Stamina"
+    LocalP.Character.Stamina.Changed:Connect(function()
+        LocalP.Character.Stamina.Value = 100 
+    end)
+end)
+
+
+
+-- by DranghetaLurk, requested by Linear
+game:GetService("RunService").RenderStepped:Connect(function()
+local LService = game:GetService("Lighting")
+LService.ClockTime = 14
+end)
+
+for i, v in pairs(game:GetService("Lighting"):GetDescendants()) do
+    if v.Parent == game:GetService("Lighting") then
+        v:Destroy()
+    end
+end
+
+
+for _,v in pairs(game.Workspace:GetDescendants()) do
+    if v.Name == "Part" and v.CanCollide == false and v.Parent.Name == "Tree" then
+       v.Color = Color3.fromRGB(148, 190, 129)
+    end
+end
+
+
+
+for _,v in pairs(game.Workspace:GetDescendants()) do
+    if v.Name == "PlantColor1" then
+       v.Color = Color3.fromRGB(148, 190, 129)
+    end
+end
+
+for _,v in pairs(game.Workspace:GetDescendants()) do
+    if v.Name == "PlantColor2" then
+        v.Color = Color3.fromRGB(148, 190, 129)
+    end
+end
+
+
+for _,v in pairs(game.Workspace:GetDescendants()) do
+    if v.Name == "PlantColor3" then
+       v.Color = Color3.fromRGB(148, 190, 129)
+    end
+end
