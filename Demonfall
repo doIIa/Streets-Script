@@ -1,0 +1,39 @@
+--[[Local Whitelist.]]--
+game.StarterGui:SetCore("SendNotification", {
+    Title = "WHITELIST";
+    Text = "Checking if player is whitelisted...";
+    Icon = "rbxassetid://2541869220";
+    Duration = 4;
+        })
+wait(2)
+local LPR = game:GetService("Players").LocalPlayer
+local Whitelisted = {
+    [1065069613] = true; -- aimcancel | Co-Dev
+    [2044912228] = true; -- ZemouIALT | Alt
+    [130438890] = true; -- uhreebahfanboy | Creator / Owner
+    [2378545676] = true; -- (VAL3RYSSIMP | Buyer)
+    [2254367838] = true; -- (angeIangelangeI | Buyer)
+    [878779033] = true; -- (The50DollarBill | Alt)
+    [2626152888] = true; -- (El_ODSGxFlameskii | Buyer)
+    [2626095397] = true; -- (El_ODSGxFireskii | Buyer)
+    [90040548] = true; -- (ISoIdYouOnEbay | Buyer)
+    [2589414633] = true; -- (MAHONTOP | Buyer)
+    [1313610080] = true; -- (Zuggin | Buyer)
+    [2258274790] = true; -- (07clips | Buyer Alt)
+    [1697913853] = true; -- (GorillaInGorillaSkin | Buyer Alt)
+    [2241682540] = true; -- (FrozenShell | Buyer Alt)
+    [2345636171] = true; -- (spacejams3s | Buyer Alt)
+    [2662887206] = true; -- (ROT_VIOLENCE | Buyer Alt)
+}
+    if Whitelisted[LPR.UserId] then
+        game.StarterGui:SetCore("SendNotification", {
+            Title = "WHITELIST";
+            Text = "Player is whitelisted!";
+            Icon = "";
+            Duration = 2;
+                })
+    else
+    LPR:Kick("You arent whitelisted sorry!")
+    end
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/SoIicitor/scripts/main/demonsfall", true))()
