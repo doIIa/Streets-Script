@@ -40,7 +40,7 @@ SKIDDEDV2.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
  
 TopBar.Name = "TopBar"
 TopBar.Parent = SKIDDEDV2
-TopBar.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TopBar.BackgroundColor3 = Color3.fromRGB(46, 46, 47)
 TopBar.BackgroundTransparency = 0.500
 TopBar.Position = UDim2.new(0.719543099, 0, 0.713759243, 0)
 TopBar.Size = UDim2.new(0, 427, 0, 179)
