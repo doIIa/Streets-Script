@@ -31,6 +31,8 @@ local BottomBar = Instance.new("Frame")
 local UIAspectRatioConstraint_13 = Instance.new("UIAspectRatioConstraint")
 local Bottomtext = Instance.new("TextLabel")
 local UIAspectRatioConstraint_14 = Instance.new("UIAspectRatioConstraint")
+
+screenGui = Instance.new("ScreenGui",game.CoreGui)
  
 --Properties:
  
