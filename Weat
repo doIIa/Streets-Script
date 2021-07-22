@@ -31,10 +31,19 @@ local BottomBar = Instance.new("Frame")
 local UIAspectRatioConstraint_13 = Instance.new("UIAspectRatioConstraint")
 local Bottomtext = Instance.new("TextLabel")
 local UIAspectRatioConstraint_14 = Instance.new("UIAspectRatioConstraint")
+local AnnGUI = Instance.new("Frame")
 
 screenGui = Instance.new("ScreenGui",game.CoreGui)
  
 --Properties:
+ 
+AnnGUI.Name = 'Boomer'
+AnnGUI.Parent = screenGui
+AnnGUI.Active = true
+AnnGUI.BackgroundTransparency = 1
+AnnGUI.Position = UDim2.new(0.5, -180, 0, -400)
+AnnGUI.Size = UDim2.new(0, 360, 0, 20)
+AnnGUI.ZIndex = 4
  
 SKIDDEDV2.Name = "SKIDDED V2"
 SKIDDEDV2.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
