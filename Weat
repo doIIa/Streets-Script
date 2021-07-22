@@ -31,19 +31,8 @@ local BottomBar = Instance.new("Frame")
 local UIAspectRatioConstraint_13 = Instance.new("UIAspectRatioConstraint")
 local Bottomtext = Instance.new("TextLabel")
 local UIAspectRatioConstraint_14 = Instance.new("UIAspectRatioConstraint")
-local AnnGUI = Instance.new("Frame")
-
-screenGui = Instance.new("ScreenGui",game.CoreGui)
  
 --Properties:
- 
-AnnGUI.Name = 'Boomer'
-AnnGUI.Parent = screenGui
-AnnGUI.Active = true
-AnnGUI.BackgroundTransparency = 1
-AnnGUI.Position = UDim2.new(0.5, -180, 0, -400)
-AnnGUI.Size = UDim2.new(0, 360, 0, 20)
-AnnGUI.ZIndex = 4
  
 SKIDDEDV2.Name = "SKIDDED V2"
 SKIDDEDV2.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
@@ -73,11 +62,11 @@ TopText.TextSize = 14.000
 UIAspectRatioConstraint_2.Parent = TopText
 UIAspectRatioConstraint_2.AspectRatio = 8.000
  
-PrisonLife.Name = "Prison Life"
+PrisonLife.Name = "3"
 PrisonLife.Parent = SKIDDEDV2
 PrisonLife.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 PrisonLife.BorderSizePixel = 0
-PrisonLife.Position = UDim2.new(0.863578677, 0, 0.902948439, 0)
+PrisonLife.Position = UDim2.new(0.863578677, -50, 0.902948439, 0)
 PrisonLife.Size = UDim2.new(0, 200, 0, 25)
 PrisonLife.Font = Enum.Font.GothamBold
 PrisonLife.Text = "Prison Life"
@@ -111,7 +100,7 @@ Autorob.Name = "Reset"
 Autorob.Parent = SKIDDEDV2
 Autorob.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 Autorob.BorderSizePixel = 0
-Autorob.Position = UDim2.new(0.863578677, 0, 0.743243277, 0)
+Autorob.Position = UDim2.new(0.863578655, -50, 0.743243277, 0)
 Autorob.Size = UDim2.new(0, 200, 0, 25)
 Autorob.Font = Enum.Font.GothamBold
 Autorob.Text = "Reset"
@@ -128,7 +117,7 @@ OwlHub.Name = "OwlHub"
 OwlHub.Parent = SKIDDEDV2
 OwlHub.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 OwlHub.BorderSizePixel = 0
-OwlHub.Position = UDim2.new(0.863578558, 0, 0.861179411, 0)
+OwlHub.Position = UDim2.new(0.863578558, -50, 0.861179411, 0)
 OwlHub.Size = UDim2.new(0, 200, 0, 25)
 OwlHub.Font = Enum.Font.GothamBold
 OwlHub.Text = "OwlHub"
@@ -145,7 +134,7 @@ Aimbot.Name = "Aimbot"
 Aimbot.Parent = SKIDDEDV2
 Aimbot.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 Aimbot.BorderSizePixel = 0
-Aimbot.Position = UDim2.new(0.863578677, 0, 0.782555223, 0)
+Aimbot.Position = UDim2.new(0.863578677, -50, 0.782555223, 0)
 Aimbot.Size = UDim2.new(0, 200, 0, 25)
 Aimbot.Font = Enum.Font.GothamBold
 Aimbot.Text = "Aimbot"
@@ -192,11 +181,11 @@ end)
 UIAspectRatioConstraint_9.Parent = FlingGUI
 UIAspectRatioConstraint_9.AspectRatio = 8.000
  
-ClickTP.Name = "ClickTP"
+ClickTP.Name = "h"
 ClickTP.Parent = SKIDDEDV2
 ClickTP.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 ClickTP.BorderSizePixel = 0
-ClickTP.Position = UDim2.new(0.863578618, 0, 0.821867347, 0)
+ClickTP.Position = UDim2.new(0.863578618, -50, 0.821867347, 0)
 ClickTP.Size = UDim2.new(0, 200, 0, 25)
 ClickTP.Font = Enum.Font.GothamBold
 ClickTP.Text = "ClickTP"
@@ -256,7 +245,7 @@ UIAspectRatioConstraint_13.AspectRatio = 14.724
 Bottomtext.Name = "Bottomtext"
 Bottomtext.Parent = SKIDDEDV2
 Bottomtext.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Bottomtext.BackgroundTransparency = 1.000
+Bottomtext.BackgroundTransparency = 5.000
 Bottomtext.Position = UDim2.new(0.791243672, 0, 0.938575029, 0)
 Bottomtext.Size = UDim2.new(0, 200, 0, 24)
 Bottomtext.Font = Enum.Font.GothamBlack
